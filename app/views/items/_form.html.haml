@@ -1,0 +1,32 @@
+= form_for @item do |f|
+  - if @item.errors.any?
+    .alert.alert-danger(role='alert')
+      %strong
+        %span.glyphicon.glyphicon-exclamation-sign(aria-hidden='true')
+          %span.sr-only
+            Error:
+        = pluralize(@item.errors.count, 'error')
+        prohibited this item from being saved:
+      %ul
+        - @item.errors.full_messages.each do |msg|
+          %li
+            = msg
+  .form-group
+    = f.label :title
+    = f.text_field :title, class: 'form-control'
+  .form-group
+    = f.label :url
+    = f.text_field :url, class: 'form-control'
+  .form-group
+    = f.label :published_at
+    = f.text_field :published_at, class: 'form-control'
+  .form-group
+    = f.label :media_type
+    = f.text_field :media_type, class: 'form-control'
+  .form-group
+    = f.label :blurb
+    = f.text_area :blurb, class: 'form-control'
+  %button.btn.btn-default(type='submit')
+    Submit
+
+

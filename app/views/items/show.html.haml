@@ -1,0 +1,18 @@
+%h1
+  = @item.title
+
+%dl.dl-horizontal
+  %dt
+    URL
+  %dd
+    = link_to @item.url
+  %dt
+    Published
+  %dd
+    = @item.published_at
+  %dt
+    Media type
+  %dd
+    = @item.media_type
+%p
+  = @item.blurb

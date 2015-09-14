@@ -1,0 +1,13 @@
+%h1
+  Engineering Reading List
+
+= link_to new_item_path, class: "btn btn-default" do
+  %span.glyphicon.glyphicon-pencil
+  Add item
+
+%ul
+  - @items.each do |item|
+    %li
+      = link_to item.title, item.url
+      &mdash;
+      = item.blurb
