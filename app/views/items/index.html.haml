@@ -1,13 +1,15 @@
-%h1
-  Engineering Reading List
-
-= link_to new_item_path, class: "btn btn-default" do
-  %span.glyphicon.glyphicon-pencil
-  Add item
-
-%ul
-  - @items.each do |item|
-    %li
-      = link_to item.title, item.url
-      &mdash;
-      = item.blurb
+.container-fluid
+  .row
+    .col-xs-12
+      - @items.each do |item|
+        .row
+          .col-md-12
+            %h3
+              = item.title
+              - if item.sent_at.present?
+                %small
+                  %span.glyphicon.glyphicon-ok
+            %p
+              = item.blurb
+            = link_to edit_item_path(item) do
+              Edit
