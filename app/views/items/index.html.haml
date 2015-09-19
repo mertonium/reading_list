@@ -10,6 +10,6 @@
                 %small
                   %span.glyphicon.glyphicon-ok
             %p
-              = item.blurb
+              = item.blurb_as_html.html_safe
             = link_to edit_item_path(item) do
               Edit
