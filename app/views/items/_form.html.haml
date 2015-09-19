@@ -26,6 +26,9 @@
   .form-group
     = f.label :blurb
     = f.text_area :blurb, class: 'form-control'
+  .form-group
+    = f.label :sent_at
+    = f.text_field :sent_at, class: 'form-control'
   %button.btn.btn-default(type='submit')
     Submit
 
