@@ -19,7 +19,7 @@ class ItemsController < ApplicationController
     @item = Item.new(item_params)
 
     if @item.save
-      redirect_to @item
+      redirect_to items_path
     else
       render 'new'
     end
@@ -29,7 +29,7 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
 
     if @item.update(item_params)
-      redirect_to @item
+      redirect_to items_path
     else
       render 'edit'
     end
@@ -38,6 +38,6 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:title, :url, :published_at, :media_type, :blurb)
+    params.require(:item).permit(:title, :url, :published_at, :media_type, :blurb, :sent_at)
   end
 end
