@@ -1,0 +1,14 @@
+# Read about fixtures at
+# http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  subject: MyString
+  body: MyText
+  state: 1
+  sent_at: 2015-09-25 23:20:08
+
+two:
+  subject: MyString
+  body: MyText
+  state: 1
+  sent_at: 2015-09-25 23:20:08

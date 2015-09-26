@@ -1,0 +1,29 @@
+= form_for @list do |f|
+  - if @list.errors.any?
+    .alert.alert-danger(role='alert')
+      %strong
+        %span.glyphicon.glyphicon-exclamation-sign(aria-hidden='true')
+          %span.sr-only
+            Error:
+        = pluralize(@list.errors.count, 'error')
+        prohibited this list from being saved:
+      %ul
+        - @list.errors.full_messages.each do |msg|
+          %li
+            = msg
+  .form-group
+    = f.label :subject
+    = f.text_field :subject, class: 'form-control'
+  .form-group
+    = f.label :body
+    = f.text_area :body, class: 'form-control', rows: 20
+  .form-group
+    = f.label :state
+    = f.select :state, List::LIST_STATES.collect{ |k, v| [v, k] }
+  .form-group
+    = f.label :sent_at
+    = f.text_field :sent_at, class: 'form-control'
+  %button.btn.btn-default(type='submit')
+    Submit
+
+
