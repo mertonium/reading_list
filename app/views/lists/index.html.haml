@@ -1,0 +1,26 @@
+.container-fluid
+  .row
+    .col-md-7.col-md-offset-2
+      .row
+        %table.col-xs-12
+          %thead
+            %tr
+              %th
+                Subject
+              %th
+                State
+              %th
+                Sent at
+          %tbody
+            - @lists.each do |list|
+              %tr
+                %td
+                  - if list.state == List::DRAFT
+                    = link_to list.subject, edit_list_path(list)
+                  - else
+                    = link_to list.subject, list_path(list)
+                %td
+                  = List::LIST_STATES[list.state]
+                %td
+                  - if list.sent_at.present?
+                    = list.sent_at.strftime('%D')
