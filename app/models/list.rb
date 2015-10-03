@@ -13,4 +13,8 @@ class List < ActiveRecord::Base
       "[%s](%s)\n%s" % [item.title, item.url, item.blurb]
     end.join("\n\n")
   end
+
+  def body_as_html
+    Kramdown::Document.new(body).to_html
+  end
 end
