@@ -1,0 +1,15 @@
+#!/usr/bin/env ruby
+require "thor"
+require File.expand_path('../../config/application', __FILE__)
+Rails.application.initialize!
+
+class LinksCLI < Thor
+  desc "add URL", "add an Item based on a given url"
+  def add(url)
+    puts "Adding #{url}"
+    item = Item.create_from_open_graph_data(url)
+    puts "Item ID: #{item.id}"
+  end
+end
+
+LinksCLI.start(ARGV)
