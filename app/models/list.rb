@@ -10,8 +10,8 @@ class List < ActiveRecord::Base
 
   def build_body_from_items(item_ids)
     self.body = Item.find(item_ids).collect do |item|
-      "[%s](%s)\n\n%s" % [item.title, item.url, item.blurb]
-    end.join("\n\n")
+      "###[%s](%s)\n\n%s" % [item.title, item.url, item.blurb]
+    end.join("\n\n---\n\n")
   end
 
   def body_as_html

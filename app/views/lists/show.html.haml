@@ -1,12 +1,13 @@
-.container-fluid
-  .row
-    .col-md-6.col-md-offset-2
-      %dl.dl-horizontal
-        %dt
-          Subject
-        %dd
-          = @list.subject
-        %dt
-          Body
-        %dd
-          = @list.body_as_html.html_safe
+.list-preview
+  .container-fluid
+    .row
+      .col-md-6.col-md-offset-2
+        %dl.dl-horizontal
+          %dt
+            Subject
+          %dd
+            = @list.subject
+          %dt
+            Body
+          %dd
+            = @list.body_as_html.html_safe

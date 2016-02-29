@@ -18,6 +18,16 @@ class ListsController < ApplicationController
     end
   end
 
+  def update
+    @list = List.find(params[:id])
+
+    if @list.update(list_params)
+      redirect_to @list
+    else
+      render 'edit'
+    end
+  end
+
   def index
     @lists = List.order("sent_at DESC")
   end
