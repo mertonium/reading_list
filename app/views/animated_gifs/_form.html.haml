@@ -1,0 +1,21 @@
+= form_for @animated_gif do |f|
+  - if @animated_gif.errors.any?
+    .alert.alert-danger(role='alert')
+      %strong
+        %span.glyphicon.glyphicon-exclamation-sign(aria-hidden='true')
+          %span.sr-only
+            Error:
+        = pluralize(@animated_gif.errors.count, 'error')
+        prohibited this list from being saved:
+      %ul
+        - @animated_gif.errors.full_messages.each do |msg|
+          %li
+            = msg
+  .form-group
+    = f.label :url
+    = f.text_field :url, class: 'form-control'
+  .form-group
+    = f.label :alt
+    = f.text_field :alt, class: 'form-control'
+  %button.btn.btn-default(type='submit')
+    Submit

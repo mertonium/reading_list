@@ -7,6 +7,7 @@ class List < ActiveRecord::Base
   }
 
   has_and_belongs_to_many :items
+  belongs_to :animated_gif
 
   def build_body_from_items(item_ids)
     self.body = Item.find(item_ids).collect do |item|

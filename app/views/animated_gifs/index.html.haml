@@ -1,0 +1,19 @@
+.container-fluid
+  .row
+    .col-md-7.col-md-offset-2
+      .row
+        %table.col-xs-12
+          %thead
+            %tr
+              %th
+                gif
+              %th
+                alt
+          %tbody
+            - @animated_gifs.each do |animated_gif|
+              %tr
+                %td
+                  %img{ src: animated_gif.url, height: '200'}
+                %td
+                  = link_to edit_animated_gif_path(animated_gif) do
+                    = animated_gif.alt
