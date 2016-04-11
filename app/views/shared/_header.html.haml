@@ -10,8 +10,14 @@
       = link_to root_path, class: 'navbar-brand' do
         Eng Reading List
 
-    #item-navbar-collapse-1.collapse.navbar-collapse
+    #navbar.navbar-collapse.collapse
+      %ul.nav.navbar-nav
+        %li
+          = link_to items_path do
+            Items
+        %li
+          = link_to lists_path do
+            Lists
       = link_to new_item_path, class: "btn btn-default navbar-btn navbar-right" do
         %span.glyphicon.glyphicon-pencil
         Add item
-
