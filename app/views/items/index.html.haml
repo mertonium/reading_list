@@ -1,17 +1,20 @@
 .container-fluid
   .row
+    .col-sm-6.col-sm-offset-3
+      %ul.nav.nav-tabs{ role: 'tablist' }
+        %li.active{ role: 'presentation' }
+          %a#hopper-tab{ href: '#hopper', role: 'tab', 'data-toggle': 'tab' }
+            The Hopper
+        %li{ role: 'presentation' }
+          %a{ href: '#used', role: 'tab', 'data-toggle': 'tab' }
+            Used
+
+  .row
     .col-xs-12
-      - @items.each do |item|
-        .row
-          .col-md-6.col-md-offset-3
-            %h3
-              = item.title || "[No title]"
-              - if item.sent_at.present?
-                %small
-                  %span.glyphicon.glyphicon-ok
-            %p
-              - unless item.blurb_as_html.nil?
-                = item.blurb_as_html.html_safe
-            = link_to edit_item_path(item) do
-              Edit
-            %hr
+      #tabContent.tab-content
+        #hopper.tab-pane.active
+          - @items.select{ |i| i.sent_at == nil }.each do |i|
+            = render partial: 'item_row', locals: { item: i }
+        #used.tab-pane
+          - @items.select{ |i| i.sent_at != nil }.each do |i|
+            = render partial: 'item_row', locals: { item: i }
