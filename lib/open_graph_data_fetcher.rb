@@ -1,10 +1,15 @@
 require 'open-uri'
+require 'nokogiri'
 
 class OpenGraphDataFetcher
   attr_reader :url
 
-  def initialize(url)
-    @url = url
+  def self.call(initial_url)
+    OpenGraphDataFetcher.new(initial_url).go
+  end
+
+  def initialize(given_url)
+    @url = given_url
   end
 
   def go
