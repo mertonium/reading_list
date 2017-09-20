@@ -8,7 +8,7 @@ class Item < ActiveRecord::Base
   validates :url, presence: true
 
   def self.create_from_open_graph_data(url)
-    og_data = OpenGraphDataFetcher.new(url).go
+    og_data = OpenGraphDataFetcher.call(url)
     puts "og_data = "
     puts og_data
     attrs = self.translateOpenGraphData(og_data)
